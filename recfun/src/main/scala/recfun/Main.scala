@@ -44,5 +44,18 @@ object Main {
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+  def countChange(money: Int, coins: List[Int]): Int = {
+    
+    def countChangeRec(sum: Int, money: Int, coins: List[Int]):Int = {
+
+      if(coins.isEmpty || sum>money) 0
+      else if(sum == money) 1
+      else
+        countChangeRec(sum + coins.head, money, coins) + countChangeRec(sum, money, coins.tail)
+      
+    }
+    
+    countChangeRec(0, money, coins)
+    
+  }
 }
